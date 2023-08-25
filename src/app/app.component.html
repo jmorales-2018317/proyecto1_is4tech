@@ -1,5 +1,23 @@
-<div>hola</div>
 <nav>
-    <a routerLink="/dogs">Dogs</a>
+  <div>
+    Proyecto 1 is4tech
+  </div>
+  <div class="navigate">
+    <ul>
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
+      <li>
+        <a routerLink="/dogs">dogs</a>
+      </li>
+      <li>
+        <a routerLink="/login">login</a>
+      </li>
+      <li>
+        <button (click)="signOut()">SignOut</button>
+      </li>
+    </ul>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>

@@ -1,1 +1,13 @@
-<div>dogs</div>
+<div>
+    <img [src]="randomDog" alt="Random dog image">
+    <div>
+        <button (click)="regenerate()">Regenerate</button>
+    </div>
+</div>
+<div >
+
+    <input type="text" [(ngModel)]="inputText">
+    <p>Texto afectado por trim: {{inputText}}</p>
+    <button class="btn btn-primary">Clean Text</button>
+
+</div>
