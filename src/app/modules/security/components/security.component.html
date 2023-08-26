@@ -1,6 +1,42 @@
 <div
-  class="fs-1 fw-bold font-monospace justify-content-center align-items-center w-100 min-vh-100 d-flex flex-column position-absolute text-center fixed-top z-0"
+  class="fw-bold font-monospace justify-content-center align-items-center w-100 min-vh-100 d-flex flex-column position-absolute text-center fixed-top z-0"
 >
-  <p class="m-0">Login with Google</p>
+  <p class="m-0 fs-1">Login with Google</p>
   <asl-google-signin-button type="icon" size="large"></asl-google-signin-button>
+
+  <div class="container pt-4" style="max-width: 550px">
+    <div *ngIf="isLoggedin === true">
+      <div class="form-group justify-content-center mb-3">
+        <p>Logged in succesfully!!</p>
+        <button type="button" (click)="dogRedirect()" class="btn btn-success">
+          Go to Dogs
+        </button>
+      </div>
+      <div *ngIf="isLoggedin === true">
+        <div class="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [value]="socialUser.name"
+            id="firstname"
+            readonly
+          />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="text"
+            class="form-control"
+            [value]="socialUser.email"
+            id="email"
+            readonly
+          />
+        </div>
+        <button type="button" (click)="logOut()" class="btn btn-danger mt-3">
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

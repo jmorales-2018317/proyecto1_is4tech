@@ -3,11 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Third Parties
-import {
-  GoogleLoginProvider,
-  SocialAuthService,
-  SocialUser
-} from '@abacritt/angularx-social-login';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-security',
@@ -15,30 +12,48 @@ import {
   styleUrls: ['./security.component.scss']
 })
 export class SecurityComponent implements OnInit {
-  user?: SocialUser;
-  logged?: boolean;
+  loginForm!: FormGroup;
+  socialUser = {
+    name: localStorage.getItem('User') || '',
+    email: localStorage.getItem('Email') || ''
+  };
+  isLoggedin = localStorage.getItem('Token') ? true : false;
 
   constructor(
-    private authService: SocialAuthService,
+    private formBuilder: FormBuilder,
+    private socialAuthService: SocialAuthService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.authService.authState.subscribe(user => {
-      this.user = user;
-      this.logged = user != null;
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
 
-      localStorage.setItem('Token', user?.idToken);
+    this.socialAuthService.authState.subscribe(user => {
+      this.socialUser = user;
+      this.isLoggedin = user != null;
 
-      const token = localStorage.getItem('Token');
-      if (token) {
-        this.router.navigate(['/dogs']);
-        console.log('redirected');
-      }
+      //Almacenar la información
+      localStorage.setItem('Token', user.idToken);
+      localStorage.setItem('User', this.socialUser.name);
+      localStorage.setItem('Email', this.socialUser.email);
     });
   }
 
-  loginWithGoogle() {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  //Borrar todos los datos al hacer logOut
+  logOut(): void {
+    this.socialUser.name = '';
+    this.socialUser.email = '';
+    this.isLoggedin = false;
+    localStorage.removeItem('Token');
+    localStorage.removeItem('User');
+    localStorage.removeItem('Email');
+  }
+
+  dogRedirect() {
+    this.router.navigate(['/dogs']);
+    console.log('redirected');
   }
 }

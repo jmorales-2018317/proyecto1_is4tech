@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 import {
   SocialLoginModule,
@@ -10,7 +12,12 @@ import { SecurityComponent } from './security.component';
 
 @NgModule({
   declarations: [SecurityComponent],
-  imports: [SocialLoginModule, GoogleSigninButtonModule],
+  imports: [
+    SocialLoginModule,
+    GoogleSigninButtonModule,
+    CommonModule,
+    BrowserModule
+  ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
