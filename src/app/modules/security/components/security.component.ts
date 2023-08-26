@@ -24,7 +24,7 @@ export class SecurityComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
+    this.authService.authState.subscribe(user => {
       this.user = user;
       this.logged = user != null;
 
@@ -33,9 +33,8 @@ export class SecurityComponent implements OnInit {
       const token = localStorage.getItem('Token');
       if (token) {
         this.router.navigate(['/dogs']);
-        console.log("redirected")
+        console.log('redirected');
       }
-      
     });
   }
 

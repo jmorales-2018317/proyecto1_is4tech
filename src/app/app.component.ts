@@ -7,17 +7,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent {
   title = 'proyecto1_is4tech';
 
-  constructor(private modalService: NgbModal) {
-  }
+  constructor(private modalService: NgbModal) {}
 
   public open(modal: never): void {
     this.modalService.open(modal);
   }
 
-  signOut(){
+  signOut() {
     localStorage.removeItem('Token');
     location.reload();
   }

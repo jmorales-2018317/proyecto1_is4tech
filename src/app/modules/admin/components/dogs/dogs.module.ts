@@ -4,9 +4,6 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    SharedModule
-  ]
+  imports: [CommonModule, SharedModule]
 })
-export class DogsModule { }
+export class DogsModule {}

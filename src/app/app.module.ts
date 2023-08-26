@@ -11,10 +11,7 @@ import { SecurityModule } from './modules/security/components/security.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DogsComponent
-  ],
+  declarations: [AppComponent, DogsComponent],
   imports: [
     BrowserModule,
     NgbModule,
@@ -25,4 +22,4 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

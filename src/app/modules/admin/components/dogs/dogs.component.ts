@@ -8,27 +8,29 @@ interface DogApiResponse {
 @Component({
   selector: 'app-dogs',
   templateUrl: './dogs.component.html',
-  styleUrls: [ './dogs.component.scss' ]
+  styleUrls: ['./dogs.component.scss']
 })
-export class DogsComponent implements OnInit{
-
+export class DogsComponent implements OnInit {
   // Random Dog Image
-  randomDog = "";
+  randomDog = '';
+  // WhiteSpace
+  inputText = '';
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<DogApiResponse>('https://dog.ceo/api/breeds/image/random').subscribe(data => {
-      this.randomDog = data.message;
-    });
+    this.http
+      .get<DogApiResponse>('https://dog.ceo/api/breeds/image/random')
+      .subscribe(data => {
+        this.randomDog = data.message;
+      });
   }
 
-  regenerate(){
-    this.ngOnInit()
+  regenerate() {
+    this.ngOnInit();
   }
 
-  // WhiteSpace
-
-  inputText = ""
-
+  cleanText() {
+    this.inputText = '';
+  }
 }

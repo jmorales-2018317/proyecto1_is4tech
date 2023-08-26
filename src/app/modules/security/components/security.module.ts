@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleSigninButtonModule,
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
 import { SecurityComponent } from './security.component';
 
-
 @NgModule({
-  declarations: [
-    SecurityComponent
-  ],
-  imports: [
-    SocialLoginModule,
-    GoogleSigninButtonModule
-  ],
+  declarations: [SecurityComponent],
+  imports: [SocialLoginModule, GoogleSigninButtonModule],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
@@ -25,12 +24,12 @@ import { SecurityComponent } from './security.component';
             )
           }
         ],
-        onError: (err) => {
+        onError: err => {
           console.error(err);
         }
-      } as SocialAuthServiceConfig,
+      } as SocialAuthServiceConfig
     }
   ],
   bootstrap: [SecurityComponent]
 })
-export class SecurityModule { }
+export class SecurityModule {}

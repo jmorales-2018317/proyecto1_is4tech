@@ -4,12 +4,7 @@ import { SharedDirective } from './directives/whitespace/whitespace.directive';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
-  exports:[
-    SharedModule,
-    SharedDirective
-  ]
+  imports: [CommonModule],
+  exports: [SharedModule, SharedDirective]
 })
-export class SharedModule { }
+export class SharedModule {}

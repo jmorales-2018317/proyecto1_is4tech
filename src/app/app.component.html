@@ -1,20 +1,27 @@
-<nav>
-  <div>
-    Proyecto 1 is4tech
-  </div>
+<nav
+  class="bg-white w-100 d-inline-block p-3 px-5 d-flex justify-content-between align-items-center font-monospace position-sticky z-3"
+>
+  <div class="fw-bold fs-5">Proyecto 1 is4tech</div>
   <div class="navigate">
-    <ul>
+    <ul class="d-flex align-items-center justify-content-center gap-3 m-0 p-0">
       <li>
-        <a routerLink="/">Home</a>
+        <a class="text-black text-decoration-none" routerLink="/">Home</a>
       </li>
       <li>
-        <a routerLink="/dogs">dogs</a>
+        <a class="text-black text-decoration-none" routerLink="/dogs">Dogs</a>
       </li>
       <li>
-        <a routerLink="/login">login</a>
+        <a class="text-black text-decoration-none" routerLink="/login">Login</a>
       </li>
       <li>
-        <button (click)="signOut()">SignOut</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-mdb-ripple-color="dark"
+          (click)="signOut()"
+        >
+          Sign Out
+        </button>
       </li>
     </ul>
   </div>

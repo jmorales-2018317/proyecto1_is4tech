@@ -4,7 +4,6 @@ import { Directive, HostListener } from '@angular/core';
   selector: '[appShared]'
 })
 export class SharedDirective {
-
   constructor() {
     this.trimText;
   }
@@ -12,6 +11,4 @@ export class SharedDirective {
   trimText(text: string) {
     return text.trim();
   }
-  
 }
-
