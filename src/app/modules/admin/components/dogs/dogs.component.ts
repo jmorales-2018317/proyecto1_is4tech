@@ -7,8 +7,7 @@ interface DogApiResponse {
 
 @Component({
   selector: 'app-dogs',
-  templateUrl: './dogs.component.html',
-  styleUrls: ['./dogs.component.scss']
+  templateUrl: './dogs.component.html'
 })
 export class DogsComponent implements OnInit {
   // Random Dog Image

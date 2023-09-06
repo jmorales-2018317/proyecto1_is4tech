@@ -8,8 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-security',
-  templateUrl: './security.component.html',
-  styleUrls: ['./security.component.scss']
+  templateUrl: './security.component.html'
 })
 export class SecurityComponent implements OnInit {
   loginForm!: FormGroup;
