@@ -9,9 +9,10 @@ import { DogsComponent } from './modules/admin/components/dogs/dogs.component';
 import { SecurityModule } from './modules/security/components/security.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LifeCycleComponent } from './modules/admin/components/life-cycle/life-cycle.component';
 
 @NgModule({
-  declarations: [AppComponent, DogsComponent],
+  declarations: [AppComponent, DogsComponent, LifeCycleComponent],
   imports: [
     BrowserModule,
     NgbModule,

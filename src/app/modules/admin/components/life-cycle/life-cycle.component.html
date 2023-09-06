@@ -1,0 +1,26 @@
+<div
+  class="d-flex flex-column justify-content-around align-items-center w-100 min-vh-100 text-center fixed-top z-0"
+>
+  <div class="d-flex gap-5">
+    <div>
+      <p>Type something:</p>
+      <input
+        type="text"
+        placeholder="Type something..."
+        [(ngModel)]="textValue"
+        class="rounded-3 border-primary p-2 py-1"
+      />
+    </div>
+    <div>
+      <p>Text value:</p>
+      <input
+        readonly
+        value="{{ textValue }}"
+        class="rounded-3 border-primary p-2 py-1"
+      />
+    </div>
+  </div>
+  <button type="button" (click)="home()" class="btn btn-success">
+    Go Home
+  </button>
+</div>
