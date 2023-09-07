@@ -20,7 +20,7 @@ export class DogsComponent implements OnInit {
   ngOnInit(): void {
     this.http
       .get<DogApiResponse>('https://dog.ceo/api/breeds/image/random')
-      .subscribe(data => {
+      .subscribe((data: DogApiResponse) => {
         this.randomDog = data.message;
       });
   }

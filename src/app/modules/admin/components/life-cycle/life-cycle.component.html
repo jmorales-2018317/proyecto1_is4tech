@@ -1,26 +1,40 @@
-<div
-  class="d-flex flex-column justify-content-around align-items-center w-100 min-vh-100 text-center fixed-top z-0"
->
-  <div class="d-flex gap-5">
-    <div>
-      <p>Type something:</p>
-      <input
-        type="text"
-        placeholder="Type something..."
-        [(ngModel)]="textValue"
-        class="rounded-3 border-primary p-2 py-1"
-      />
-    </div>
-    <div>
-      <p>Text value:</p>
-      <input
-        readonly
-        value="{{ textValue }}"
-        class="rounded-3 border-primary p-2 py-1"
-      />
+<div class="p-5">
+  <div>
+    <h3>Value of an input</h3>
+    <p>Some Text:</p>
+    <input
+      type="text"
+      placeholder="Type something..."
+      [(ngModel)]="textValue"
+      class="rounded-3 border-primary p-2 py-1"
+    />
+  </div>
+  <div class="d-flex w-25">
+    <p class="m-0 me-2">Input Text:</p>
+    <div
+      type="text"
+      rows="6"
+      class="text-danger text-wrap overflow-y-scroll"
+      disabled
+    >
+      {{ textValue }}
     </div>
   </div>
-  <button type="button" (click)="home()" class="btn btn-success">
-    Go Home
-  </button>
+
+  <div class="mt-4">
+    <h3>OnChanges Values</h3>
+    <p>Actual Text:</p>
+    <input
+      type="text"
+      [(ngModel)]="prevText"
+      placeholder="Type something..."
+      class="rounded-3 border-primary p-2 py-1"
+    />
+  </div>
+  <app-on-changes [prevText]="prevText"> </app-on-changes>
+
+  <div class="mt-4">
+    <p>Check your brower console to see the OnDestroy</p>
+    <button (click)="goHome()" class="btn btn-danger">Go Home</button>
+  </div>
 </div>

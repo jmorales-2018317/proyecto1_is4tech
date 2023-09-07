@@ -6,20 +6,24 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DogsComponent } from './modules/admin/components/dogs/dogs.component';
-import { SecurityModule } from './modules/security/components/security.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LifeCycleComponent } from './modules/admin/components/life-cycle/life-cycle.component';
+import { OnChangesComponent } from './modules/admin/components/life-cycle/on-changes/on-changes.component';
 
 @NgModule({
-  declarations: [AppComponent, DogsComponent, LifeCycleComponent],
+  declarations: [
+    AppComponent,
+    DogsComponent,
+    LifeCycleComponent,
+    OnChangesComponent
+  ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    SecurityModule
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

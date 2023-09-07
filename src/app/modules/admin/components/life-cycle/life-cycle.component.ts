@@ -9,12 +9,13 @@ export class LifeCycleComponent implements OnDestroy {
   constructor(private router: Router) {}
 
   textValue = '';
+  prevText = '';
 
   ngOnDestroy(): void {
-    console.log('Doing On Destroy');
+    console.log('On Destroy done!');
   }
 
-  home() {
+  goHome() {
     this.router.navigate(['/']);
   }
 }

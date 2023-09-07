@@ -16,7 +16,8 @@ export class SecurityComponent implements OnInit {
     name: localStorage.getItem('User') || '',
     email: localStorage.getItem('Email') || ''
   };
-  isLoggedin = localStorage.getItem('Token') ? true : false;
+  isLoggedin =
+    this.socialUser.name !== '' && this.socialUser.name != null ? true : false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,10 +33,14 @@ export class SecurityComponent implements OnInit {
 
     this.socialAuthService.authState.subscribe(user => {
       this.socialUser = user;
-      this.isLoggedin = user != null;
+
+      if (this.socialUser.name !== '') {
+        this.isLoggedin = true;
+      } else {
+        this.isLoggedin = false;
+      }
 
       //Almacenar la información
-      localStorage.setItem('Token', user.idToken);
       localStorage.setItem('User', this.socialUser.name);
       localStorage.setItem('Email', this.socialUser.email);
     });
@@ -46,7 +51,6 @@ export class SecurityComponent implements OnInit {
     this.socialUser.name = '';
     this.socialUser.email = '';
     this.isLoggedin = false;
-    localStorage.removeItem('Token');
     localStorage.removeItem('User');
     localStorage.removeItem('Email');
   }

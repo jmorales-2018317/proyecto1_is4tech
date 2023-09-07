@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
 import {
   SocialLoginModule,
@@ -9,14 +7,23 @@ import {
   GoogleLoginProvider
 } from '@abacritt/angularx-social-login';
 import { SecurityComponent } from './security.component';
+import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SecurityComponent
+  }
+];
 
 @NgModule({
   declarations: [SecurityComponent],
   imports: [
+    CommonModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
-    CommonModule,
-    BrowserModule
+    RouterModule.forChild(routes)
   ],
   providers: [
     {
@@ -37,6 +44,7 @@ import { SecurityComponent } from './security.component';
       } as SocialAuthServiceConfig
     }
   ],
-  bootstrap: [SecurityComponent]
+  exports: [RouterModule],
+  bootstrap: []
 })
 export class SecurityModule {}

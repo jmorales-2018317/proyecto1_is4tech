@@ -7,9 +7,9 @@ export class AuthService {
   logged: boolean | undefined;
 
   isLoggedIn() {
-    const token = localStorage.getItem('Token') || '';
+    const user = localStorage.getItem('User');
 
-    if (token === '') {
+    if (!user || user === '') {
       this.logged = false;
       return this.logged;
     }
