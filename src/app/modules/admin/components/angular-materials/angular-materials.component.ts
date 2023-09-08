@@ -1,6 +1,12 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ViewEncapsulation,
+  ViewChild
+} from '@angular/core';
 import {
   FormBuilder,
+  FormControl,
   FormsModule,
   Validators,
   ReactiveFormsModule
@@ -22,6 +28,22 @@ import { AngularMaterialsDialogComponent } from './angular-materials-dialog/angu
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
+import * as _moment from 'moment';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { default as rollupMoment, Moment } from 'moment';
+
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS
+} from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE
+} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 export interface DialogData {
   title: string;
@@ -51,6 +73,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { id: 12, names: 'John', age: 20 }
 ];
 
+const moment = rollupMoment || _moment;
+
+// See the Moment.js docs for the meaning of these formats:
+// https://momentjs.com/docs/#/displaying/format/
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY'
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  }
+};
+
 @Component({
   selector: 'app-angular-materials',
   templateUrl: './angular-materials.component.html',
@@ -71,14 +109,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
     MatSortModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
-  ]
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class AngularMaterialsComponent implements AfterViewInit {
   //DATE PICKERS
 
   minDate: Date;
   maxDate: Date;
+  date = new FormControl(moment());
 
   //FAB BUTTON
 
@@ -110,6 +165,20 @@ export class AngularMaterialsComponent implements AfterViewInit {
     this.maxDate = new Date();
     this.minBirthDay = new Date(currentYear - 100, 0, 1);
     this.maxBirthDay = new Date();
+  }
+
+  //DATEPICKER
+
+  setMonthAndYear(
+    normalizedMonthAndYear: Moment,
+    datepicker: MatDatepicker<Moment>
+  ) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    datepicker.close();
   }
 
   //FAB BUTTON

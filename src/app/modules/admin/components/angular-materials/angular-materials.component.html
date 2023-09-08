@@ -35,6 +35,22 @@
     </mat-form-field>
   </div>
   <div class="col-6 p-0 m-0 d-flex flex-column align-items-center mb-5">
+    <h3 class="text-info">Year and Month</h3>
+    <mat-form-field>
+      <mat-label>Month and Year</mat-label>
+      <input matInput [matDatepicker]="dp" [formControl]="date" />
+      <mat-hint>MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker
+        #dp
+        startView="multi-year"
+        (monthSelected)="setMonthAndYear($event, dp)"
+        panelClass="example-month-picker"
+      >
+      </mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="col-6 p-0 m-0 d-flex flex-column align-items-center mb-5">
     <h3 class="text-info">MM/DD/YYYY FORMAT</h3>
     <mat-form-field>
       <mat-label>Choose a date</mat-label>
