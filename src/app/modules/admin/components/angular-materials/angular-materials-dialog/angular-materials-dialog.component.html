@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{ data.title }}: {{ data.name }}</h1>
+<div mat-dialog-content>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Your Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.username"
+        (keyup)="validName()"
+        [formControl]="nameFormControl"
+        [errorStateMatcher]="matcher"
+        placeholder="Your name"
+        required
+      />
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <mat-error>
+    <button mat-button [disabled]="disabled" [mat-dialog-close]="data.username">
+      Ok
+    </button>
+  </mat-error>
+</div>

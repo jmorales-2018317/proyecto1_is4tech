@@ -5,6 +5,7 @@ import { DogsComponent } from './modules/admin/components/dogs/dogs.component';
 import { authGuard } from './modules/security/auth/auth.guard';
 import { AdminComponent } from './modules/admin/components/admin.component';
 import { LifeCycleComponent } from './modules/admin/components/life-cycle/life-cycle.component';
+import { AngularMaterialsComponent } from './modules/admin/components/angular-materials/angular-materials.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/presentation', pathMatch: 'full' },
   { path: 'lifeCycle', component: LifeCycleComponent },
   { path: 'presentation', component: AdminComponent },
+  { path: 'materials', component: AngularMaterialsComponent },
   {
     path: 'login',
     loadChildren: () =>
