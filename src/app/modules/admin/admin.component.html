@@ -1,0 +1,200 @@
+<h1 class="w-100 text-center fw-bold m-0">Form Validations</h1>
+
+<form [formGroup]="userForm" (ngSubmit)="submit()" class="p-4 px-5">
+  <div class="d-flex w-100 justify-content-around">
+    <div class="w-50 pe-3">
+      <p>Name:</p>
+      <input
+        formControlName="name"
+        (focusout)="formErrors.nameError = true"
+        class="w-100 mb-3"
+        type="text"
+      />
+      <span
+        class="text-danger me-3"
+        *ngIf="
+          this.userForm.get('name')?.errors?.['required'] &&
+          formErrors.nameError === true
+        "
+      >
+        *Name is required
+      </span>
+      <span
+        class="text-danger me-3"
+        *ngIf="this.userForm.get('name')?.errors?.['pattern']"
+      >
+        *Invalid name
+      </span>
+      <span
+        class="text-danger me-3"
+        *ngIf="this.userForm.get('name')?.errors?.['maxlength']"
+      >
+        *Name have a max of 45 characterers
+      </span>
+
+      <p class="mt-3">Birthday:</p>
+      <input
+        formControlName="birthday"
+        (focusout)="formErrors.birthdayError = true"
+        class="mb-3"
+        type="date"
+        max="{{ today }}"
+      />
+      <span
+        class="text-danger me-3"
+        *ngIf="
+          this.userForm.get('birthday')?.errors?.['required'] &&
+          formErrors.birthdayError === true
+        "
+      >
+        *BirthDay is required
+      </span>
+      <p>NIT:</p>
+      <div class="d-flex gap-3">
+        <input
+          formControlName="nit"
+          (focusout)="formErrors.nitError = true"
+          type="number"
+        />
+        <div class="d-flex gap-2 align-items-center">
+          <p class="m-0">C/F:</p>
+          <input type="checkbox" id="checkbox" (change)="noNit()" />
+        </div>
+      </div>
+      <span
+        class="text-danger me-3"
+        *ngIf="
+          this.userForm.get('nit')?.errors?.['required'] &&
+          formErrors.nitError === true &&
+          cf === false
+        "
+      >
+        *NIT is required
+      </span>
+      <span
+        class="text-danger me-3"
+        *ngIf="
+          this.userForm.get('nit')?.errors?.['max'] &&
+          this.userForm.get('nit')?.errors?.['min'] &&
+          formErrors.nitError === true &&
+          cf === false
+        "
+      >
+        *invalid NIT
+      </span>
+      <span
+        class="text-danger me-3"
+        *ngIf="
+          this.userForm.get('nit')?.errors?.['max'] ||
+          this.userForm.get('nit')?.errors?.['min']
+        "
+      >
+        *Invalid NIT
+      </span>
+    </div>
+    <div class="w-50 ps-3">
+      <mat-slide-toggle (change)="newUser()" class="mb-4"
+        >New here?</mat-slide-toggle
+      >
+      <div *ngIf="active">
+        <p>Emergency phone:</p>
+        <input
+          formControlName="phone"
+          (focusout)="formErrors.phoneError = true"
+          class="w-100 mb-3"
+          type="number"
+        />
+        <span
+          class="text-danger me-3"
+          *ngIf="
+            this.userForm.get('phone')?.errors?.['required'] &&
+            formErrors.phoneError === true
+          "
+        >
+          *Phone is required
+        </span>
+        <span
+          class="text-danger me-3"
+          *ngIf="
+            this.userForm.get('phone')?.errors?.['max'] ||
+            this.userForm.get('phone')?.errors?.['min']
+          "
+        >
+          *Invalid Phone (8 digits)
+        </span>
+
+        <p class="mt-2">Address:</p>
+        <input
+          formControlName="address"
+          (focusout)="formErrors.addressError = true"
+          class="w-100 mb-3"
+          type="text"
+        />
+        <span
+          class="text-danger me-3"
+          *ngIf="
+            this.userForm.get('address')?.errors?.['required'] &&
+            formErrors.addressError === true
+          "
+        >
+          *Address is required
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <p>Coment ( 200 characters max )</p>
+    <textarea
+      formControlName="coment"
+      (focusout)="formErrors.comentError = true"
+      type="text"
+      rows="3"
+      class="form-control mb-3"
+    ></textarea>
+    <span
+      class="text-danger me-3"
+      *ngIf="
+        this.userForm.get('coment')?.errors?.['required'] &&
+        formErrors.comentError === true
+      "
+    >
+      *Coment is required
+    </span>
+    <span
+      class="text-danger me-3"
+      *ngIf="this.userForm.get('coment')?.errors?.['maxlength']"
+    >
+      *Coment must have less than 200 characters
+    </span>
+  </div>
+  <div class="mt-4">
+    <button
+      (click)="validData = true"
+      [disabled]="!userForm.valid"
+      type="submit"
+      class="btn btn-success me-3"
+    >
+      Guardar
+    </button>
+    <button type="button" class="btn btn-danger" (click)="clean()">
+      Clean
+    </button>
+  </div>
+</form>
+<div *ngIf="validData" class="px-5">
+  Datos:
+  <p>*Nombre: {{ formValues.name }}</p>
+  <p>*Fecha de nacimiento: {{ formValues.birthday }}</p>
+  <p>*NIT: {{ formValues.nit }}</p>
+  <p>*Comentario: {{ formValues.coment }}</p>
+  <div *ngIf="active && validData">
+    <p>Teléfono: {{ formValues.phone || '' }}</p>
+    <p>Dirección: {{ formValues.address || '' }}</p>
+  </div>
+</div>
+
+<h1 class="text-center fw-bold m-0">Directive & Pipes</h1>
+
+<div class="px-5">
+  <h3 class="fw-bold m-0">Directives</h3>
+</div>
