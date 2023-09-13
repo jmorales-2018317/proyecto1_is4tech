@@ -5,6 +5,7 @@
     <div class="w-50 pe-3">
       <p>Name:</p>
       <input
+        maxlength="45"
         formControlName="name"
         (focusout)="formErrors.nameError = true"
         class="w-100 mb-3"
@@ -25,13 +26,6 @@
       >
         *Invalid name
       </span>
-      <span
-        class="text-danger me-3"
-        *ngIf="this.userForm.get('name')?.errors?.['maxlength']"
-      >
-        *Name have a max of 45 characterers
-      </span>
-
       <p class="mt-3">Birthday:</p>
       <input
         formControlName="birthday"
@@ -145,6 +139,7 @@
   <div class="mt-4">
     <p>Coment ( 200 characters max )</p>
     <textarea
+      maxlength="200"
       formControlName="coment"
       (focusout)="formErrors.comentError = true"
       type="text"
@@ -159,12 +154,6 @@
       "
     >
       *Coment is required
-    </span>
-    <span
-      class="text-danger me-3"
-      *ngIf="this.userForm.get('coment')?.errors?.['maxlength']"
-    >
-      *Coment must have less than 200 characters
     </span>
   </div>
   <div class="mt-4">
@@ -181,7 +170,7 @@
     </button>
   </div>
 </form>
-<div *ngIf="validData" class="px-5">
+<div *ngIf="validData" class="mx-5 overflow-y-scroll">
   Datos:
   <p>*Nombre: {{ formValues.name }}</p>
   <p>*Fecha de nacimiento: {{ formValues.birthday }}</p>
@@ -193,7 +182,7 @@
   </div>
 </div>
 
-<h1 class="text-center fw-bold m-0">Directive & Pipes</h1>
+<h1 class="text-center fw-bold m-0 my-4">Directive & Pipes</h1>
 
 <div class="px-5">
   <h3 class="fw-bold m-0">Directives</h3>

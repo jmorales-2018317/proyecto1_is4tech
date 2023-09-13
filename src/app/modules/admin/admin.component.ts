@@ -44,7 +44,6 @@ export class AdminComponent {
   userForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      Validators.maxLength(45),
       Validators.pattern('[a-zA-Z ]*')
     ]),
     nit: new FormControl('', [
@@ -53,10 +52,7 @@ export class AdminComponent {
       Validators.max(99999999)
     ]),
     birthday: new FormControl('', [Validators.required]),
-    coment: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(200)
-    ]),
+    coment: new FormControl('', [Validators.required]),
     phone: new FormControl(''),
     address: new FormControl('')
   });
