@@ -1,9 +1,9 @@
 import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appShared]'
+  selector: '[appWhiteSpace]'
 })
-export class SharedDirective {
+export class WhiteSpaceDirective {
   constructor() {
     this.trimText;
   }

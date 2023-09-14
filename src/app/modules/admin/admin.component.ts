@@ -1,12 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 type formValues = {
   name: string;
@@ -19,9 +12,7 @@ type formValues = {
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  standalone: true,
-  imports: [MatSlideToggleModule, CommonModule, ReactiveFormsModule]
+  templateUrl: './admin.component.html'
 })
 export class AdminComponent {
   greetingHand = 'src/images/greeting_hand.png';

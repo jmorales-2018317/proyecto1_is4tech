@@ -184,6 +184,43 @@
 
 <h1 class="text-center fw-bold m-0 my-4">Directive & Pipes</h1>
 
-<div class="px-5">
-  <h3 class="fw-bold m-0">Directives</h3>
+<div class="px-5 text-center">
+  <h2 class="fw-bold m-0">Pipe</h2>
+  <p>{{ 'max 13 characteres' | substring: 13 }}</p>
+</div>
+
+<div class="row m-0 py-5">
+  <div class="px-5 col text-center">
+    <h2 class="fw-bold m-0 my-2">Directive 1</h2>
+    <div>
+      <input
+        appSeparator
+        placeholder="Type a number"
+        type="text"
+        pattern="[0-9,]*"
+      />
+    </div>
+  </div>
+
+  <div class="px-5 col text-center">
+    <h2 class="fw-bold m-0 my-2">Directive 2</h2>
+    <div>
+      <p appHighlight color="135, 206, 235" class="m-0 my-2">
+        Try to hover this text!
+      </p>
+    </div>
+  </div>
+
+  <div class="px-5 col">
+    <h2 class="fw-bold m-0">Directive 3</h2>
+    <div class="d-flex gap-3">
+      <p class="m-0 d-flex align-items-center">Copy this text to clipboard!</p>
+      <button
+        appCopyToClipboard
+        class="btn-secondary d-flex align-items-center"
+      >
+        <mat-icon>assignment</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
