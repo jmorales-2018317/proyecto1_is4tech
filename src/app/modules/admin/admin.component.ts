@@ -32,6 +32,26 @@ export class AdminComponent {
     comentError: false
   };
 
+  openDialog = false;
+  user = {
+    userCreated: 'avasquez@gmail.com',
+    dateCreated: '31/12/0001 17:59:56',
+    userUpdated: 'avasquez2002@gmail.com',
+    dateUpdated: '13/10/2022 10:59:33'
+  };
+
+  onOpenDialog() {
+    this.openDialog = true;
+    const modal = document.getElementById('body');
+    if (modal) {
+      modal.classList.add('open');
+    }
+  }
+
+  onCloseDialog() {
+    this.openDialog = false;
+  }
+
   userForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,

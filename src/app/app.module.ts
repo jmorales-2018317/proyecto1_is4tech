@@ -14,6 +14,8 @@ import { OnChangesComponent } from './modules/admin/components/life-cycle/on-cha
 import { SharedModule } from './modules/shared/shared.module';
 import { AdminComponent } from './modules/admin/admin.component';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    MatIconModule
   ],
   bootstrap: [AppComponent]
 })

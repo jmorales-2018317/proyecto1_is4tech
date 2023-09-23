@@ -1,0 +1,36 @@
+<div
+  (click)="closeDialog()"
+  class="w-100 h-100 bg-black position-fixed top-0 start-0 z-2 opacity-25"
+></div>
+<div
+  class="card shadow-lg p-5 bg-white position-fixed position-relative top-50 end-0 translate-middle-y z-3"
+>
+  <section>
+    <h2 class="w-100 lh-sm fs-1">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="info"
+        fontIcon="info"
+      ></mat-icon>
+      AUDIT CREATION
+    </h2>
+    <h3 class="fw-bold">User:</h3>
+    <p>{{ user.userCreated }}</p>
+    <h3 class="fw-bold">Date:</h3>
+    <p>{{ user.dateCreated }}</p>
+  </section>
+  <section>
+    <h2 class="w-100 lh-sm fs-1 my-2">LAST UPDATE</h2>
+    <h3 class="fw-bold">User:</h3>
+    <p>{{ user.userUpdated }}</p>
+    <h3 class="fw-bold">Date:</h3>
+    <p>{{ user.dateUpdated }}</p>
+  </section>
+  <div
+    class="w-100 position-absolute d-flex justify-content-center bottom-0 mb-5 px-5 start-50 translate-middle-x"
+  >
+    <button (click)="closeDialog()" class="closeBtn btn btn-dark w-100 py-2">
+      Close
+    </button>
+  </div>
+</div>

@@ -1,3 +1,13 @@
+<div class="w-100 h-50 d-flex justify-content-center align-items-center">
+  <button (click)="onOpenDialog()" class="btn btn-primary">Open Dialog</button>
+</div>
+
+<app-user
+  [user]="user"
+  *ngIf="openDialog"
+  (closeDialogEvent)="onCloseDialog()"
+></app-user>
+
 <h1 class="w-100 text-center fw-bold m-0">Form Validations</h1>
 
 <form [formGroup]="userForm" (ngSubmit)="submit()" class="p-4 px-5">
